@@ -1,4 +1,6 @@
 import React from "react"; // Застарілий імпорт, в сучасних версіях робити не потрібно
+
+import NewExpense from "./components/NewExpense/NewExpense";
 import Expenses from "./components/Expenses/Expenses";
 
 const App = () => {    // Стрілочна нотація замість слова function
@@ -38,7 +40,7 @@ const App = () => {    // Стрілочна нотація замість сл�
 
   return (
     <div>
-      <h2>Let's get started!</h2>
+      <NewExpense />
       <Expenses items={expenses} />
     </div>
   );
