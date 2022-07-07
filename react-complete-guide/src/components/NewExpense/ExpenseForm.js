@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import "./ExpenseForm.css";
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
@@ -21,7 +21,7 @@ const ExpenseForm = () => {
     // console.log(userInput.enteredTitle);
 
     setEnteredTitle(event.target.value);
-    console.log(enteredTitle);
+    // console.log(enteredTitle);
   };
   const amountChangeHandler = (event) => {
     // setUserInput({
@@ -31,7 +31,7 @@ const ExpenseForm = () => {
     // console.log(userInput.enteredAmount);
 
     setEnteredAmount(event.target.value);
-    console.log(enteredAmount);
+    // console.log(enteredAmount);
   };
   const dateChangeHandler = (event) => {
     // setUserInput({                        // Поганий спосіб
@@ -45,7 +45,7 @@ const ExpenseForm = () => {
     // console.log(userInput.enteredDate);
 
     setEnteredDate(event.target.value);
-    console.log(enteredDate);
+    // console.log(enteredDate);
   };
 
   const submitHandler = (event) => {
@@ -58,7 +58,8 @@ const ExpenseForm = () => {
     };
 
 
-    console.log(expenseData);
+    // console.log(expenseData);
+    props.onSaveExpenseData(expenseData);
     setEnteredTitle('');
     setEnteredAmount('');
     setEnteredDate('');
@@ -94,7 +95,7 @@ const ExpenseForm = () => {
         </div>
       </div>
       <div className="new-expense__actions">
-        <button type="submit">Add Expense</button>
+        <button type="submit">Додати витрату</button>
       </div>
     </form>
   );

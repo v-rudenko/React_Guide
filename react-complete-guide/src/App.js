@@ -31,6 +31,11 @@ const App = () => {    // Стрілочна нотація замість сл�
     },
   ];
 
+  const addExpenseHandler = expense => {
+    console.log('In App.js');
+    console.log(expense);
+  };
+
   // return React.createElement(     //Для розуміння яка створюються елементи "Під капотом"
   //   "div",
   //   {},
@@ -40,7 +45,7 @@ const App = () => {    // Стрілочна нотація замість сл�
 
   return (
     <div>
-      <NewExpense />
+      <NewExpense onAddExpense={addExpenseHandler}/>
       <Expenses items={expenses} />
     </div>
   );
