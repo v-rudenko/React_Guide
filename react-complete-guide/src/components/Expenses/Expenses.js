@@ -13,21 +13,8 @@ const Expenses = (props) => {
 
   const [selectedYear, setSelectedYear] = useState(defaultYear);
 
-  // Страшна, довга умова. Треба придумати щось краще.
-
-  const [expensesFilteredByYear, setExpensesFilteredByYear] = useState(
-    props.items.filter(
-      (expense) => expense.date.getFullYear().toString() === defaultYear
-    )
-  );
-
   const filterSavedHandler = (year) => {
     setSelectedYear(year);
-    setExpensesFilteredByYear(
-      props.items.filter(
-        (expense) => expense.date.getFullYear().toString() === year
-      )
-    );
   };
 
   return (
@@ -37,19 +24,10 @@ const Expenses = (props) => {
           selected={selectedYear}
           onFilterSaved={filterSavedHandler}
         />
-        {/* {expensesFilteredByYear.map((expense) => (
-          <ExpenseItem
-            key={expense.id}
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          />
-        ))} */}
-
-
-        {/* Це - жахіття */}
         {props.items
-          .filter((expense) => expense.date.getFullYear().toString() === selectedYear)
+          .filter(
+            (expense) => expense.date.getFullYear().toString() === selectedYear
+          )
           .map((expense) => (
             <ExpenseItem
               key={expense.id}
