@@ -28,10 +28,7 @@ const Expenses = (props) => {
           selected={selectedYear}
           onFilterSaved={filterSavedHandler}
         />
-        {/* {props.items
-          .filter(
-            (expense) => expense.date.getFullYear().toString() === selectedYear
-          ) */}
+        
         {filteredExpenses.map((expense) => (
           <ExpenseItem
             key={expense.id}
