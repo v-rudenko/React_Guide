@@ -34,12 +34,12 @@ const DUMMY_EXPENSES = [
     amount: 3500,
     date: new Date(2022, 2, 2),
   },
-  {
-    id: "e6",
-    title: "Шахівниця",
-    amount: 200,
-    date: new Date(2019, 7, 10),
-  },
+  // {
+  //   id: "e6",
+  //   title: "Шахівниця",
+  //   amount: 200,
+  //   date: new Date(2019, 7, 10),
+  // },
 ];
 
 const App = () => {
