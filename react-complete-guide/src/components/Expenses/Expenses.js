@@ -3,10 +3,10 @@
 ////////////////////////////////////////////////
 
 import React, { useState } from "react";
-import ExpenseItem from "./ExpenseItem";
 import Card from "../UI/Card";
 import ExpensesFilter from "./ExpensesFilter";
 import "./Expenses.css";
+import ExpensesList from "./ExpensesList";
 
 const Expenses = (props) => {
   const defaultYear = "2021";
@@ -21,19 +21,6 @@ const Expenses = (props) => {
     return expense.date.getFullYear().toString() === selectedYear;
   });
 
-  let expensesContent = <p>No expenses found.</p>;
-  console.log(expensesContent);
-
-  if (filteredExpenses.length > 0) {
-    expensesContent = filteredExpenses.map((expense) => (
-      <ExpenseItem
-        key={expense.id}
-        title={expense.title}
-        amount={expense.amount}
-        date={expense.date}
-      />
-    ));
-  }
 
   return (
     <div>
@@ -43,7 +30,7 @@ const Expenses = (props) => {
           onFilterSaved={filterSavedHandler}
         />
 
-        {expensesContent}
+        <ExpensesList items={filteredExpenses} />
 
         {/* {filteredExpenses.length === 0 && <p>No expenses found.</p>} */}
 
