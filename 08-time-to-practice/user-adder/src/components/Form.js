@@ -14,11 +14,12 @@ const Form = (props) => {
   };
   const UserSubmitHandler = () => {
     if (enteredName === "" || enteredAge === "") {
-      alert("Будь ласка вкажіть дійсне ім'я та вік (не порожні значення).");
+
+      props.onShowError("Будь ласка вкажіть ім'я та вік (не порожні значення).");
       return false;
     }
     if (enteredAge <= 0) {
-      alert("Будь ласка вкажіть дійсний вік (>0).");
+      props.onShowError("Вкажіть дійсний вік (> 0).");
       return false;
     }
     const user = {
@@ -40,7 +41,7 @@ const Form = (props) => {
           <input value={enteredName} onChange={NameTypingHandler} type="text" />
           <label>Вік (років)</label>
           <input value={enteredAge} onChange={AgeTypingHandler} type="number" />
-          <Button submitUser={UserSubmitHandler} />
+          <Button value={"Додати користувача"} buttonClicked={UserSubmitHandler} />
         </div>
       </form>
     </div>

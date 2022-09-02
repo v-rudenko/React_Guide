@@ -1,12 +1,13 @@
 import React from "react";
+import styles from "./Button.module.css"
 
 const Button = (props) => {
   const ButtonClickHandler = (event) => {
     event.preventDefault();
-    props.submitUser();
+    props.buttonClicked();
   };
 
-  return <button onClick={ButtonClickHandler}>Додати користувача</button>;
+  return <button className={styles.button} onClick={ButtonClickHandler}>{props.value}</button>;
 };
 
 export default Button;
