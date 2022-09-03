@@ -6,7 +6,7 @@ const UsersList = (props) => {
   let users = [];
   console.log(props.users);
   props.users.map((user) => {
-    users.push(<User name={user.name} age={user.age} />);
+    users.push(<User key={user.id} name={user.name} age={user.age} />);
   })
   if (users.length > 0){
     return (

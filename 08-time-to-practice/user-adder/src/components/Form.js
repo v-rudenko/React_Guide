@@ -13,18 +13,27 @@ const Form = (props) => {
     setEnteredAge(event.target.value);
   };
   const UserSubmitHandler = () => {
-    if (enteredName === "" || enteredAge === "") {
-
-      props.onShowError("Будь ласка вкажіть ім'я та вік (не порожні значення).");
+    const error = {
+      type: '',
+      text: ''
+    };
+    if (enteredName.trim() === "" || enteredAge.trim() === "") {
+      error.type = 'Неправильне введення';
+      error.text = "Будь ласка вкажіть ім'я та вік (не порожні значення).";
+      console.log(error);
+      props.onShowError(error);
       return false;
     }
     if (enteredAge <= 0) {
-      props.onShowError("Вкажіть дійсний вік (> 0).");
+      error.type = "Неправильний вік";
+      error.text = "Вкажіть дійсний вік (> 0).";
+      props.onShowError(error);
       return false;
     }
     const user = {
       name: enteredName,
-      age: enteredAge
+      age: enteredAge,
+      id: Math.random().toString()
     }
     // console.log(`Додано користувача ${enteredName} (${enteredAge} років)`);
 

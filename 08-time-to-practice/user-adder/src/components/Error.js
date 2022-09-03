@@ -25,9 +25,9 @@ const Error = (props) => {
     >
       <div onClick={ChildClick} className={styles.center_div}>
         <div className={styles.error_header__div}>
-          <h2>Неправильне введення</h2>
+          <h2>{props.error_type}</h2>
         </div>
-        <div><p className={styles.error_text}>{props.message}</p></div>
+        <div><p className={styles.error_text}>{props.error_text}</p></div>
           {/* <h2 className={styles.error_header}>Неправильне введення</h2> */}
         <div className={styles.button_div}><Button value={"Добре"} className={styles.button} buttonClicked={buttonClickHandler} /></div>
       </div>

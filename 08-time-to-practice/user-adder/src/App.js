@@ -11,16 +11,19 @@ const App = () => {
 
   const [showError, setShowError] = useState(false);
 
-  const [message, setMessage] = useState("")
+  const [error, setError] = useState({});
 
-  const showErrorHandler = (errorText) => {
+  const showErrorHandler = (error) => {
     // setMessage("Будь ласка вкажіть ім'я та вік (не порожні значення)");
-    setMessage(errorText);
+    setError({
+      type: error.type,
+      text: error.text,
+    });
     setShowError(true);
-  }
+  };
   const hideErrorHandler = (event) => {
     setShowError(false);
-  }
+  };
 
   const AddUserHandler = (user) => {
     console.log(`Додано користувача ${user.name} ${user.age}`);
@@ -33,7 +36,12 @@ const App = () => {
     <div className={styles.App}>
       <Form AddUser={AddUserHandler} onShowError={showErrorHandler} />
       <UsersList users={users} />
-      <Error errorDisplayed={showError} onHideError={hideErrorHandler} message={message} />
+      <Error
+        errorDisplayed={showError}
+        onHideError={hideErrorHandler}
+        error_type={error.type}
+        error_text={error.text}
+      />
     </div>
   );
 };
