@@ -1,7 +1,7 @@
 import React from 'react'
 
 const MyParagraph = (props) => {
-  console.log("Button RUNNING")
+  console.log("Paragraph RUNNING")
 
   return (
     <p>{props.children}</p>
