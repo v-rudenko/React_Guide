@@ -8,7 +8,7 @@ export default function App() {
 
   const keyHandler = (event) => {
     setMessage(event.target.value)
-      console.log(message.trim().length)
+      // console.log(message.trim().length)
   }
 
 
