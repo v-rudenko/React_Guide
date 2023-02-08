@@ -5,7 +5,6 @@ import Users from "./Users";
 import classes from "./UserFinder.module.css";
 import UsersContext from "../store/users-context";
 
-
 class UserFinder extends Component {
   static contextType = UsersContext;
 
@@ -19,7 +18,7 @@ class UserFinder extends Component {
 
   componentDidMount() {
     // Send http request
-    this.setState({filteredUsers: this.context.users})
+    this.setState({ filteredUsers: this.context.users });
   }
 
   componentDidUpdate(prevProps, prevState) {
