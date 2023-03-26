@@ -45,3 +45,16 @@ let people: Person[];
 let course: string | number = "React with Typescript";
 
 course = 1234;
+
+// Functions & types
+
+function add (a: number, b: number): number | string {
+  return a + b;
+}
+
+function Print(value:any) {
+  console.log(value);
+}
+
+Print("Бабун")
+console.log("Бабун")
