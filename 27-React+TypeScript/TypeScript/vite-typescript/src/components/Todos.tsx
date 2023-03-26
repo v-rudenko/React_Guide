@@ -1,4 +1,5 @@
 import Todo from "../models/todo";
+import TodoTask from "./Todo";
 
 type Props = {
   items: Todo[];
@@ -6,8 +7,9 @@ type Props = {
 };
 
 const Todos = (props: Props) => {
+  console.log(props.items[0].text)
   return <ul>
-    {props.items.map(item => <li key={item.id}>{item.text}</li>)}
+    {props.items.map(item => <TodoTask key={item.id} text={item.text}/>)}
   </ul>;
 };
 
