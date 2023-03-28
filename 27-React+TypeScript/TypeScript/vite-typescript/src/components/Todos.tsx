@@ -1,5 +1,5 @@
 import Todo from "../models/todo";
-import TodoTask from "./Todo";
+import TodoTask from "./TodoTask";
 
 type Props = {
   items: Todo[];
