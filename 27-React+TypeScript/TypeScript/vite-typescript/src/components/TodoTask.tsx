@@ -4,7 +4,7 @@ import classes from "./TodoTask.module.css";
 type Props = {
   id: string;
   text: string;
-  onClick: MouseEventHandler;
+  onClick: () => void;
 };
 
 const TodoTask = (props: Props) => {

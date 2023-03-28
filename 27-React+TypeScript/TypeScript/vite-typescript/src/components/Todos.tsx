@@ -12,17 +12,13 @@ type Props = {
 
 const Todos = (props: Props) => {
 
-  const clickHandler = (event: React.MouseEvent) => {
-    console.log(event.currentTarget.id);
-    props.onRemoveTodo(event.currentTarget.id);
-  };
-  
+
   return (
     <ul className={classes.todos}>
       {props.items.map((item) => (
         <TodoTask
           id={item.id}
-          onClick={clickHandler}
+          onClick={props.onRemoveTodo.bind(null, item.id)}
           key={item.id}
           text={item.text}
         />
