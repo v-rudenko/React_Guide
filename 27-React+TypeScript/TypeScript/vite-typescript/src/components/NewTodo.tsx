@@ -1,6 +1,8 @@
 import { useRef } from "react";
 
-type Props = {};
+type Props = {
+  onAddTodo: (text:string) => void;
+};
 
 const NewTodo = (props: Props) => {
 
@@ -15,6 +17,7 @@ const NewTodo = (props: Props) => {
       // throw an error
       return;
     }
+    props.onAddTodo(enteredText);
   }
   return (
     <form onSubmit={submitHandler}>
