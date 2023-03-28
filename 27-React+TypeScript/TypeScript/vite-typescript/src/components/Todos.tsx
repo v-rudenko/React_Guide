@@ -7,7 +7,6 @@ type Props = {
 };
 
 const Todos = (props: Props) => {
-  console.log(props.items[0].text)
   return <ul>
     {props.items.map(item => <TodoTask key={item.id} text={item.text}/>)}
   </ul>;
