@@ -14,6 +14,10 @@ const SimpleInput = (props) => {
   const formSubmissionHandler = (event) => {
     event.preventDefault();
 
+    if (enteredName.trim() === '') {
+      return;
+    }
+
     const enteredValue = nameInputRef.current.value;
 
     console.log(enteredName);
