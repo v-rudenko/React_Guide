@@ -1,28 +1,24 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 const SimpleInput = (props) => {
-  // const nameInputRef = useRef();
   const [enteredName, setEnteredName] = useState("");
-  // const [enteredNameIsValid, setEnteredNameIsValid] = useState(false);
+  const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredNameTouched, setEnteredNameTouched] = useState(false);
-  // const [formIsValid, setFormIsValid] = useState(false)
+
+  const [showEmailError, setShowEmailError] = useState(false);
+  const [emailErrorText, setEmailErrorText] = useState("");
 
   const enteredNameIsValid = enteredName.trim() !== "";
+  const [enteredEmailIsValid, setEnteredEmailIsValid] = useState(false)
   const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched;
 
   let formIsValid = false;
 
-  if (enteredNameIsValid) {
+  if (enteredNameIsValid && enteredEmailIsValid) {
     formIsValid = true;
   }
 
-  // useEffect(() => {
-  //   if (enteredName) {
-  //     setFormIsValid(true)
-  //   } else {
-  //     setFormIsValid(false)
-  //   }
-  // }, [enteredName]); 
+
 
   // Спосіб з використанням стану
 
@@ -30,8 +26,36 @@ const SimpleInput = (props) => {
     setEnteredName(event.target.value);
   };
 
-  const nameInputBlurHandler = (event) => {
+  const emailInputChangeHandler = (event) => {
+    setEnteredEmail(event.target.value);
+    if (showEmailError) {
+      setShowEmailError(false);
+    }
+  };
+
+  const nameInputBlurHandler = () => {
     setEnteredNameTouched(true);
+  };
+
+  const emailInputBlurHandler = () => {
+
+    if (enteredEmail.trim() === "") {
+      setShowEmailError(true);
+      setEmailErrorText("Email must not be empty");
+      enteredEmailIsValid(false)
+    } else if (
+      !enteredEmail.match(
+        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+      )
+    ) {
+      setShowEmailError(true);
+      setEmailErrorText("Email is invalid");
+      enteredEmailIsValid(false)
+    } else {
+      setShowEmailError(false);
+      setEmailErrorText("");
+      setEnteredEmailIsValid(true)
+    }
   };
 
   const formSubmissionHandler = (event) => {
@@ -40,23 +64,21 @@ const SimpleInput = (props) => {
     setEnteredNameTouched(true);
 
     if (!enteredNameIsValid) {
-      return
+      return;
     }
 
-    // Спосіб з використанням рефа
-
-    // const enteredValue = nameInputRef.current.value;
-
-    // console.log(`From state: ${enteredName}`);
-    // console.log(`From ref: ${enteredValue}`);
-
-    // nameInputRef.current.value = "";   // Погане рішення, через використання звичайного JavaScript
     setEnteredName("");
+    setEnteredEmail("")
     setEnteredNameTouched(false);
   };
 
 
+
   const nameInputClasses = nameInputIsInvalid
+    ? "form-control invalid"
+    : "form-control";
+
+  const emailInputClasses = showEmailError
     ? "form-control invalid"
     : "form-control";
 
@@ -65,7 +87,6 @@ const SimpleInput = (props) => {
       <div className={nameInputClasses}>
         <label htmlFor="name">Your Name</label>
         <input
-          // ref={nameInputRef}
           type="text"
           id="name"
           onChange={nameInputChangeHandler}
@@ -75,6 +96,18 @@ const SimpleInput = (props) => {
         {nameInputIsInvalid && (
           <p className="error-text">Name must not be empty.</p>
         )}
+      </div>
+
+      <div className={emailInputClasses}>
+        <label htmlFor="email">Your Email</label>
+        <input
+          type="text"
+          id="email"
+          onChange={emailInputChangeHandler}
+          onBlur={emailInputBlurHandler}
+          value={enteredEmail}
+        />
+        {showEmailError && <p className="error-text">{emailErrorText}</p>}
       </div>
       <div className="form-actions">
         <button disabled={!formIsValid}>Submit</button>
