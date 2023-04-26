@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const SimpleInput = (props) => {
+const SimpleInput = () => {
   const [enteredName, setEnteredName] = useState("");
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredNameTouched, setEnteredNameTouched] = useState(false);
@@ -42,7 +42,7 @@ const SimpleInput = (props) => {
     if (enteredEmail.trim() === "") {
       setShowEmailError(true);
       setEmailErrorText("Email must not be empty");
-      enteredEmailIsValid(false)
+      setEnteredEmailIsValid(false)
     } else if (
       !enteredEmail.match(
         /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
@@ -50,7 +50,7 @@ const SimpleInput = (props) => {
     ) {
       setShowEmailError(true);
       setEmailErrorText("Email is invalid");
-      enteredEmailIsValid(false)
+      setEnteredEmailIsValid(false)
     } else {
       setShowEmailError(false);
       setEmailErrorText("");
