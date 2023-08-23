@@ -70,3 +70,7 @@
 // }
 
 // init();
+
+const hobbies = ["Sports", "Cooking", "Reading"];
+hobbies.push("Working");
+console.log(hobbies);
