@@ -45,18 +45,28 @@
 
 // console.log(index)
 
-function handleTimeout() {
-  console.log("Timed out!");
-}
+// function handleTimeout() {
+//   console.log("Timed out!");
+// }
 
-const handleTimeout2 = () => {
-  console.log("Timed out ...again!");
-};
+// const handleTimeout2 = () => {
+//   console.log("Timed out ...again!");
+// };
 
-setTimeout(handleTimeout, 2000);
+// setTimeout(handleTimeout, 2000);
 
-function greeter(greetFn) {
-  greetFn();
-}
+// function greeter(greetFn) {
+//   greetFn();
+// }
 
-greeter(() => console.log("Hi"))
+// greeter(() => console.log("Hi"))
+
+
+// function init() {
+//   function greet() {
+//     console.log("Hi!");
+//   }
+//   greet();
+// }
+
+// init();
