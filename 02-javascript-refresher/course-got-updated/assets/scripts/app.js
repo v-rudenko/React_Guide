@@ -38,9 +38,25 @@
 // user1.greet();
 
 
-const hobbies = ["Sports", "Cooking", "Reading"];
-console.log(hobbies[0])
+// const hobbies = ["Sports", "Cooking", "Reading"];
+// console.log(hobbies[0])
 
-const index = hobbies.findIndex((item) => item === "Sports");
+// const index = hobbies.findIndex((item) => item === "Sports");
 
-console.log(index)
+// console.log(index)
+
+function handleTimeout() {
+  console.log("Timed out!");
+}
+
+const handleTimeout2 = () => {
+  console.log("Timed out ...again!");
+};
+
+setTimeout(handleTimeout, 2000);
+
+function greeter(greetFn) {
+  greetFn();
+}
+
+greeter(() => console.log("Hi"))
