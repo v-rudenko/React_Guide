@@ -1,4 +1,4 @@
-const Concept = ({ title, description, image }) => {
+function Concept({ title, description, image }) {
   return (
     <li className="concept">
       <img src={image} alt={title} />
@@ -6,5 +6,5 @@ const Concept = ({ title, description, image }) => {
       <p>{description}</p>
     </li>
   );
-};
+}
 export default Concept;
