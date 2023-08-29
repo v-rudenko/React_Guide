@@ -1,6 +1,6 @@
-import classes from "./Table.module.css";
+import classes from "./ResultsTable.module.css";
 
-const Table = ({ dataSet }) => {
+const ResultsTable = ({ dataSet }) => {
 
   const formatter = new Intl.NumberFormat('uk-UA', {
     style: 'currency',
@@ -31,16 +31,9 @@ const Table = ({ dataSet }) => {
         </tr>
       </thead>
       <tbody>
-        {/* <tr>
-          <td>YEAR NUMBER</td>
-          <td>TOTAL SAVINGS END OF YEAR</td>
-          <td>INTEREST GAINED IN YEAR</td>
-          <td>TOTAL INTEREST GAINED</td>
-          <td>TOTAL INVESTED CAPITAL</td>
-        </tr> */}
         {tableOutput}
       </tbody>
     </table>
   );
 };
-export default Table;
+export default ResultsTable;

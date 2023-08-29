@@ -1,6 +1,6 @@
-import classes from "./Form.module.css"
+import classes from "./UserInput.module.css"
 
-const Form = ({ onSubmit, onReset }) => {
+const UserInput = ({ onSubmit, onReset }) => {
   return (
     <form onSubmit={onSubmit} className={classes.form}>
       <div className={classes.input_group}>
@@ -36,4 +36,4 @@ const Form = ({ onSubmit, onReset }) => {
     </form>
   );
 };
-export default Form;
+export default UserInput;
