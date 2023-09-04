@@ -1,21 +1,88 @@
+import useInput from "../hooks/use-input";
+
 const BasicForm = (props) => {
+  const {
+    value: firstNameValue,
+    valueChangeHandler: firstNameValueChangeHandler,
+    hasError: firstNameHasError,
+    inputBlurHandler: firstNameBlurHandler,
+    isEmpty: firstNameIsEmpty,
+  } = useInput((value) => value.trim() !== "");
+
+  const {
+    value: lastNameValue,
+    valueChangeHandler: lastNameValueChangeHandler,
+    hasError: lastNameHasError,
+    inputBlurHandler: lastNameBlurHandler,
+    isEmpty: lastNameIsEmpty,
+  } = useInput((value) => value.trim() !== "");
+
+  const {
+    value: emailValue,
+    valueChangeHandler: emailValueChangeHandler,
+    hasError: emailHasError,
+    inputBlurHandler: emailBlurHandler,
+    isEmpty: emailIsEmpty,
+  } = useInput((value) =>
+    value.match(
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+    )
+  );
+
+  const firstNameClasses = firstNameHasError
+    ? "form-control invalid"
+    : "form-control";
+
+  const lastNameClasses = lastNameHasError
+    ? "form-control invalid"
+    : "form-control";
+
+  const emailClasses = emailHasError
+    ? "form-control invalid"
+    : "form-control";
+
   return (
     <form>
-      <div className='control-group'>
-        <div className='form-control'>
-          <label htmlFor='name'>First Name</label>
-          <input type='text' id='name' />
+      <div className="control-group">
+        <div className={firstNameClasses}>
+          <label htmlFor="name">First Name</label>
+          <input
+            onChange={firstNameValueChangeHandler}
+            value={firstNameValue}
+            type="text"
+            id="name"
+            onBlur={firstNameBlurHandler}
+          />
+          {firstNameHasError && firstNameIsEmpty ? (
+            <p className="error-text">First Name must not be empty.</p>
+          ) : null}
+          <></>
         </div>
-        <div className='form-control'>
-          <label htmlFor='name'>Last Name</label>
-          <input type='text' id='name' />
+        <div className={lastNameClasses}>
+          <label htmlFor="name">Last Name</label>
+          <input
+            value={lastNameValue}
+            onChange={lastNameValueChangeHandler}
+            onBlur={lastNameBlurHandler}
+            type="text"
+            id="name"
+          />
+          {lastNameHasError && lastNameIsEmpty ? (
+            <p className="error-text">Last Name must not be empty.</p>
+          ) : null}
         </div>
       </div>
-      <div className='form-control'>
-        <label htmlFor='name'>E-Mail Address</label>
-        <input type='text' id='name' />
+      <div className={emailClasses}>
+        <label htmlFor="name">E-Mail Address</label>
+        <input value={emailValue} onChange={emailValueChangeHandler} onBlur={emailBlurHandler} type="text" id="name" />
+        {emailHasError &&
+          (emailIsEmpty ? (
+            <p className="error-text">Email Name must not be empty.</p>
+          ) : (
+            <p className="error-text">Email is invalid.</p>
+          ))}
       </div>
-      <div className='form-actions'>
+      <div className="form-actions">
         <button>Submit</button>
       </div>
     </form>
