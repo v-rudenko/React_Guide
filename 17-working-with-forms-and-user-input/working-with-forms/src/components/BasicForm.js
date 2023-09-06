@@ -7,6 +7,7 @@ const BasicForm = (props) => {
     hasError: firstNameHasError,
     inputBlurHandler: firstNameBlurHandler,
     isEmpty: firstNameIsEmpty,
+    isValid: firstNameIsValid,
   } = useInput((value) => value.trim() !== "");
 
   const {
@@ -15,6 +16,7 @@ const BasicForm = (props) => {
     hasError: lastNameHasError,
     inputBlurHandler: lastNameBlurHandler,
     isEmpty: lastNameIsEmpty,
+    isValid: lastNameIsValid,
   } = useInput((value) => value.trim() !== "");
 
   const {
@@ -23,11 +25,18 @@ const BasicForm = (props) => {
     hasError: emailHasError,
     inputBlurHandler: emailBlurHandler,
     isEmpty: emailIsEmpty,
+    isValid: emailIsValid,
   } = useInput((value) =>
     value.match(
       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
     )
   );
+
+  let formIsValid = false;
+
+  if (firstNameIsValid && lastNameIsValid && emailIsValid) {
+    formIsValid = true;
+  }
 
   const firstNameClasses = firstNameHasError
     ? "form-control invalid"
@@ -37,9 +46,7 @@ const BasicForm = (props) => {
     ? "form-control invalid"
     : "form-control";
 
-  const emailClasses = emailHasError
-    ? "form-control invalid"
-    : "form-control";
+  const emailClasses = emailHasError ? "form-control invalid" : "form-control";
 
   return (
     <form>
@@ -74,7 +81,13 @@ const BasicForm = (props) => {
       </div>
       <div className={emailClasses}>
         <label htmlFor="name">E-Mail Address</label>
-        <input value={emailValue} onChange={emailValueChangeHandler} onBlur={emailBlurHandler} type="text" id="name" />
+        <input
+          value={emailValue}
+          onChange={emailValueChangeHandler}
+          onBlur={emailBlurHandler}
+          type="text"
+          id="name"
+        />
         {emailHasError &&
           (emailIsEmpty ? (
             <p className="error-text">Email Name must not be empty.</p>
@@ -83,7 +96,7 @@ const BasicForm = (props) => {
           ))}
       </div>
       <div className="form-actions">
-        <button>Submit</button>
+        <button disabled={!formIsValid}>Submit</button>
       </div>
     </form>
   );
