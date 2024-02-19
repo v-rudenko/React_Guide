@@ -1,4 +1,6 @@
 import React from "react"; // Застарілий імпорт, в сучасних версіях робити не потрібно
+
+import NewExpense from "./components/NewExpense/NewExpense";
 import Expenses from "./components/Expenses/Expenses";
 
 const App = () => {    // Стрілочна нотація замість слова function
@@ -29,6 +31,11 @@ const App = () => {    // Стрілочна нотація замість сл�
     },
   ];
 
+  const addExpenseHandler = expense => {
+    console.log('In App.js');
+    console.log(expense);
+  };
+
   // return React.createElement(     //Для розуміння яка створюються елементи "Під капотом"
   //   "div",
   //   {},
@@ -38,7 +45,7 @@ const App = () => {    // Стрілочна нотація замість сл�
 
   return (
     <div>
-      <h2>Let's get started!</h2>
+      <NewExpense onAddExpense={addExpenseHandler}/>
       <Expenses items={expenses} />
     </div>
   );
