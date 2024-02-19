@@ -1,0 +1,13 @@
+.button {
+  height: 35px;
+  background: indigo;
+  color: white;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #6503ac;
+}/*# sourceMappingURL=Button.module.css.map */
