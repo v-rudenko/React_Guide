@@ -7,45 +7,15 @@ const ExpenseForm = (props) => {
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
 
-  // const [userInput, setUserInput] = useState({
-  //   enteredTitle: "",
-  //   enteredAmount: "",
-  //   enteredDate: "",
-  // });
-
   const titleChangeHandler = (event) => {
-    // setUserInput({
-    //   ...userInput,
-    //   enteredTitle: event.target.value,
-    // });
-    // console.log(userInput.enteredTitle);
-
     setEnteredTitle(event.target.value);
-    // console.log(enteredTitle);
   };
   const amountChangeHandler = (event) => {
-    // setUserInput({
-    //   ...userInput,
-    //   enteredAmount: event.target.value,
-    // });
-    // console.log(userInput.enteredAmount);
 
     setEnteredAmount(event.target.value);
-    // console.log(enteredAmount);
   };
   const dateChangeHandler = (event) => {
-    // setUserInput({                        // Поганий спосіб
-    //   ...userInput,
-    //   enteredDate: event.target.value,
-    // });
-    // setUserInput((prevState) => {
-    //   return { ...prevState, enteredTitle: event.target.value };
-    // });
-
-    // console.log(userInput.enteredDate);
-
     setEnteredDate(event.target.value);
-    // console.log(enteredDate);
   };
 
   const submitHandler = (event) => {
@@ -53,12 +23,11 @@ const ExpenseForm = (props) => {
 
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,   // плюс дозволяє додавати як числа, а не як рядки.
       date: new Date(enteredDate),
     };
 
 
-    // console.log(expenseData);
     props.onSaveExpenseData(expenseData);
     setEnteredTitle('');
     setEnteredAmount('');
@@ -95,6 +64,7 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type="button" onClick={props.onCancel}>Скасувати</button>
         <button type="submit">Додати витрату</button>
       </div>
     </form>
